@@ -1,0 +1,11 @@
+.navbar-item{
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.navbar-start {
+     margin-left: 10rem;
+}
+

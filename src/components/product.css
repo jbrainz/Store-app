@@ -1,0 +1,25 @@
+.center{ 
+  text-align: center;
+  padding: 20px;
+}
+
+
+.text-custom{
+  color: #000000;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 0%;
+  text-align: center;
+  padding-top: 5px !important;
+}
+
+.card{
+  border-radius: 15px;
+  box-shadow: 3px 3px 5px 6px #ccc !important;
+}
+
+.rating{
+ text-align: center;
+  color: #c9ae16;
+}
