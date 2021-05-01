@@ -14,7 +14,11 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav
+        className="navbar is-fixed-top"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div className="navbar-brand">
           <NavLink className="navbar-item" activeClassName="selected" to="/">
             <img
