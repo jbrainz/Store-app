@@ -1,0 +1,23 @@
+{
+  "name": "robertshop",
+  "version": "1.0.0",
+  "description": "an online vintage store",
+  "main": "server.js",
+  "author": "jbrainz",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.2",
+    "nodemon": "^2.0.7"
+  }
+}
