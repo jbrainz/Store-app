@@ -1,0 +1,24 @@
+.flex-cont {
+  margin-top: 8rem !important;
+}
+.s {
+  width: 70%;
+}
+
+.content-p-tag {
+  font-size: 1.6rem;
+  font-family: 'Comfortaa', sans-serif;
+  color: rgb(15, 11, 11);
+  opacity: 0.9;
+}
+
+@media only screen and (min-width: 321px) and (max-width: 538px) {
+  .content-p-tag {
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 10px;
+  }
+  .s {
+    width: 100%;
+  }
+}

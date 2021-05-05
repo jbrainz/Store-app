@@ -16,7 +16,7 @@
   }
 }
 .space-up {
-  margin-top: -3.75rem !important;
+  margin-top: 3.75rem !important;
 }
 .size {
   font-size: 40px;
@@ -98,19 +98,19 @@
   color: #fff !important;
   font-size: 2.5rem !important;
   text-align: left;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Comfortaa', sans-serif;
 }
 .mobile {
   color: #fff !important;
   font-size: 1.8rem !important;
   text-align: left;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   font-weight: 600;
 }
 
 .flexx {
   padding: 10px;
-  width: 27rem;
+  width: auto;
 }
 
 .shadow {
@@ -133,25 +133,25 @@
   font-family: 'Comfortaa', sans-serif;
   font-variant: normal;
 }
-
 .is-flex {
   justify-content: space-around;
 }
 
 @media only screen and (min-width: 321px) and (max-width: 538px) {
-  .main-container {
-    height: 15rem;
-  }
   .mobile-font {
     font-size: 18px !important;
-    color: #333 !important;
+    color: #fff !important;
   }
   .mobile {
-    color: #333 !important;
+    color: #fff !important;
     font-size: 20px !important;
   }
   .mobile-features {
     font-size: 1rem;
     font-weight: 600;
+  }
+  .extends {
+    opacity: 0.6;
+    margin-top: 0;
   }
 }

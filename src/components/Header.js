@@ -2,11 +2,14 @@
 import { Link, NavLink } from 'react-router-dom'
 import './header.css'
 import { useState } from 'react'
+import useWindowDimensions from '../util/windowsHeightWidth'
 
 const Header = () => {
   const [className, setClassName] = useState(false)
   const [menDropdown, setMenDropdown] = useState(false)
   const [womenDropdown, setWomenDropdown] = useState(false)
+
+  const { width } = useWindowDimensions()
 
   const onClick = () => {
     setClassName(!className)
@@ -19,29 +22,38 @@ const Header = () => {
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="navbar-brand">
-          <NavLink className="navbar-item" activeClassName="selected" to="/">
-            <img
-              src="https://bulma.io/images/bulma-logo.png"
-              width="112"
-              height="28"
-              alt="robert"
-            />
-          </NavLink>
-          <Link
-            role="button"
-            className={`navbar-burger burger ${className ? 'is-active' : ''}`}
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
-            onClick={onClick}
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </Link>
-        </div>
-
+        {' '}
+        {width <= 540 ? (
+          <div className="navbar-brand">
+            <NavLink className="navbar-item" activeClassName="selected" to="/">
+              <img src="/img/logo.png" width="112" height="178" alt="robert" />
+            </NavLink>
+            <a
+              role="button"
+              className={`navbar-burger burger ${className ? 'is-active' : ''}`}
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasicExample"
+              onClick={onClick}
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        ) : null}
+        {/* <a
+          role="button"
+          className={`navbar-burger burger ${className ? 'is-active' : ''}`}
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+          onClick={onClick}
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a> */}
         <div
           id="navbarBasicExample"
           className={`navbar-menu ${className ? 'is-active' : ''}`}
@@ -77,12 +89,12 @@ const Header = () => {
               )}
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
-              <Link
+              <a
                 onClick={() => setWomenDropdown(!womenDropdown)}
                 className="navbar-item"
               >
                 Women
-              </Link>
+              </a>
               {womenDropdown && (
                 <div className="navbar-dropdown">
                   <Link to="/" className="navbar-item">
@@ -102,6 +114,23 @@ const Header = () => {
               )}
             </div>
           </div>
+          {width > 540 ? (
+            <div className="navbar-brand">
+              <NavLink
+                className="navbar-item"
+                activeClassName="selected"
+                to="/"
+              >
+                <img
+                  src="/img/logo.png"
+                  width="112"
+                  height="178"
+                  alt="robert"
+                />
+              </NavLink>
+            </div>
+          ) : null}
+
           <div className="navbar-end">
             <div className="navbar-item">
               <div>

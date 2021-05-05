@@ -1,9 +1,8 @@
 import Carousel from 'react-elastic-carousel'
-import products from '../product'
 import Product from './Product'
 import useWindowDimensions from '../util/windowsHeightWidth'
 
-const Slider = () => {
+const Slider = ({ products }) => {
   const { width } = useWindowDimensions()
   return (
     <Carousel
@@ -11,7 +10,7 @@ const Slider = () => {
       pagination={false}
       autoPlaySpeed={4000}
       showArrows={false}
-      itemsToShow={width <= 430 ? 2 : 4}
+      itemsToShow={width <= 430 ? 1 : 4}
       enableMouseSwipe={false}
       easing="cubic-bezier(.28,.91,.62,.08)"
       tiltEasing="cubic-bezier(0.110, 1, 1.000, 0.210)"
