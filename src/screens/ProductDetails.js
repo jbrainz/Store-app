@@ -6,8 +6,8 @@ import { listProductDetails } from '../state/actions/productAction'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 
-const ProductDetails = ({ match }) => {
-  const [qty, setQty] = useState(0)
+const ProductDetails = ({ history, match }) => {
+  const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
 
   const productDetails = useSelector((state) => state.productDetails)
@@ -16,6 +16,10 @@ const ProductDetails = ({ match }) => {
   useEffect(() => {
     dispatch(listProductDetails(match.params.id))
   }, [dispatch, match])
+
+  const addToCart = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
+  }
 
   return (
     <>
@@ -73,8 +77,34 @@ const ProductDetails = ({ match }) => {
                       </div>
                       <hr className="hr-rule" />
                     </div>
+                    {product.countInStock > 0 && (
+                      <div className="columns">
+                        <div className="column">Qty</div>
+
+                        <form
+                          className="column"
+                          defaultValue={qty}
+                          onChange={(e) => setQty(e.target.value)}
+                        >
+                          <div className="control">
+                            <div className="select">
+                              <select>
+                                {[...Array(product.countInStock).keys()].map(
+                                  (x) => (
+                                    <option key={x + 1} value={x + 1}>
+                                      {x + 1}
+                                    </option>
+                                  ),
+                                )}
+                              </select>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    )}
                     <div className="column">
                       <button
+                        onClick={addToCart}
                         className="button is-dark radius"
                         type="button"
                         disabled={product.countInStock === 0}
