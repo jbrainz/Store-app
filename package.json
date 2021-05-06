@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "https://6c3a2c3772e6.ngrok.io",
+  "proxy": "https://5f199072d36f.ngrok.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
