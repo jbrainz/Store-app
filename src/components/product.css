@@ -1,0 +1,42 @@
+.center {
+  text-align: center;
+  padding: 20px;
+}
+
+.text-custom {
+  color: #000000;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 0%;
+  text-align: center;
+  padding-top: 5px !important;
+}
+
+.n-card {
+  border-radius: 15px;
+  width: 15rem;
+}
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 18rem !important;
+    height: 0% !important;
+    margin-top: 3rem;
+  }
+  .text-custom {
+    font-size: 12px !important;
+  }
+  .rating {
+    font-size: 8px !important;
+  }
+  .n-card {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+.rating {
+  text-align: left;
+  color: #c9ae16;
+  margin-left: 15px;
+}
