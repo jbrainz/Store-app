@@ -14,8 +14,8 @@ export const listProducts = () => async (dispatch) => {
       type: PRODUCT_LIST_REQUEST,
     })
     const { data } = await axios.get('/api/products', {
+      withCredentials: false,
       headers: {
-        'x-apikey': '59a7ad19f5a9fa0808f11931',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       },
