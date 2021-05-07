@@ -4,14 +4,18 @@ import Header from './components/Header'
 import HomeScreen from './screens/HomeScreen'
 import ProductDetails from './screens/ProductDetails'
 import CartScreen from './screens/CartScreen'
+import RegisterScreen from './screens/Register'
+import LoginScreen from './screens/Login'
 
 function App() {
   return (
     <Router>
       <Header />
-      <Route path="/" component={HomeScreen} exact />
+      <Route path="/login" component={LoginScreen} />
+      <Route path="/register" component={RegisterScreen} />
       <Route path="/product/:id" component={ProductDetails} />
       <Route path="/cart/:id?" component={CartScreen} />
+      <Route path="/" component={HomeScreen} exact />
       <Footer />
     </Router>
   )

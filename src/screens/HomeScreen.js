@@ -18,14 +18,6 @@ const HomeScreen = () => {
     dispatch(listProducts())
   }, [dispatch])
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     const { data } = await axios.get('/api/products')
-  //     setProduct(data)
-  //   }
-  //   fetchProducts()
-  // }, [])
-
   return (
     <>
       <div className="container">

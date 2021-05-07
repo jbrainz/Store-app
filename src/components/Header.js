@@ -1,18 +1,28 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Link, NavLink } from 'react-router-dom'
-import './header.css'
 import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
+import './header.css'
 import useWindowDimensions from '../util/windowsHeightWidth'
+import { logout } from '../state/actions/user-actions'
 
 const Header = () => {
   const [className, setClassName] = useState(false)
   const [menDropdown, setMenDropdown] = useState(false)
   const [womenDropdown, setWomenDropdown] = useState(false)
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
+  const dispatch = useDispatch()
   const { width } = useWindowDimensions()
 
   const onClick = () => {
     setClassName(!className)
+  }
+
+  const logoutHandler = () => {
+    dispatch(logout())
   }
 
   return (
@@ -133,18 +143,43 @@ const Header = () => {
 
           <div className="navbar-end">
             <div className="navbar-item">
-              <div>
-                <Link to="/login" className="button is-light">
-                  <span className="icon">
-                    <i className="fas fa-user-circle"></i>
-                  </span>
-                  <strong>Account</strong>
-                </Link>
-              </div>
-              <div>
-                <Link to="/cart" className="button is-light">
-                  <span className="icon">
-                    <i className="fas fa-cart-plus"></i>
+              {userInfo ? (
+                <div className="navbar-item has-dropdown is-hoverable">
+                  <Link className="navbar-item" to="/profile">
+                    <h4 style={{ fontSize: '15px', fontWeight: '700' }}>
+                      {userInfo.name}
+                    </h4>
+                  </Link>
+                  <div className="navbar-dropdown">
+                    <a
+                      style={{ fontSize: '15px', fontWeight: '700' }}
+                      to="/profile"
+                      className="navbar-item"
+                    >
+                      Profile
+                    </a>
+                    <a
+                      style={{ fontSize: '15px', fontWeight: '700' }}
+                      onClick={logoutHandler}
+                      className="navbar-item"
+                    >
+                      Logout
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <div className="navbar-item">
+                  <Link to="/login" className="is-light navbar-item">
+                    <span className="cart-item">
+                      <i className="far fa-user-circle"></i>ACCOUNT
+                    </span>
+                  </Link>
+                </div>
+              )}
+              <div style={{ marginLeft: '1.5rem' }} className="is-light">
+                <Link to="/cart" className="is-dark navbar-item">
+                  <span className="cart-item">
+                    <i className="fas fa-shopping-bag"></i>Cart
                   </span>
                 </Link>
               </div>

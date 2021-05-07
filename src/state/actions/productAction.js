@@ -13,13 +13,7 @@ export const listProducts = () => async (dispatch) => {
     dispatch({
       type: PRODUCT_LIST_REQUEST,
     })
-    const { data } = await axios.get('/api/products', {
-      withCredentials: false,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      },
-    })
+    const { data } = await axios.get('/api/products')
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
