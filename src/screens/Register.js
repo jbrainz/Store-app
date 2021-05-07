@@ -92,6 +92,7 @@ const RegisterScreen = ({ location, history }) => {
         <div className="field">
           <div className="control">
             <button
+              type="submit"
               className={
                 loading
                   ? 'button is-loading is-link is-fullwidth is-rounded'

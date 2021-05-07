@@ -22,3 +22,22 @@
   color: '#000';
   font-family: 'Courier New', Courier, monospace;
 }
+
+.disabledCursor {
+  cursor: default;
+  color: rgb(97, 97, 97);
+}
+
+.text-styles {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Gotham', Arial, sans-serif;
+}
+
+.edited {
+  letter-spacing: 0 !important;
+}
+
+.remove-border {
+  border: 0 !important;
+}
