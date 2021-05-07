@@ -145,19 +145,19 @@ const Header = () => {
             <div className="navbar-item">
               {userInfo ? (
                 <div className="navbar-item has-dropdown is-hoverable">
-                  <Link className="navbar-item" to="/profile">
+                  <Link className="navbar-item">
                     <h4 style={{ fontSize: '15px', fontWeight: '700' }}>
                       {userInfo.name}
                     </h4>
                   </Link>
                   <div className="navbar-dropdown">
-                    <a
+                    <Link
                       style={{ fontSize: '15px', fontWeight: '700' }}
                       to="/profile"
                       className="navbar-item"
                     >
                       Profile
-                    </a>
+                    </Link>
                     <a
                       style={{ fontSize: '15px', fontWeight: '700' }}
                       onClick={logoutHandler}
