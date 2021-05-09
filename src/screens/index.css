@@ -194,3 +194,24 @@
   margin-top: 15px;
   font-size: 1.4rem !important;
 }
+
+@media only screen and (max-width: 768px) {
+  .smaller {
+    justify-content: center;
+    align-items: flex-start !important;
+  }
+}
+
+.margin-tp {
+  margin-top: 2rem !important;
+}
+
+.is-centered {
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hr-rule {
+  margin: 0.4rem 0;
+}

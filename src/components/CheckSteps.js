@@ -7,7 +7,9 @@ const CheckSteps = ({ step1, step2, step3, step4 }) => {
       <div className="navbar-item edited">
         {step1 ? (
           <NavLink to="/login">
-            <Link className="text-styles">Sign In</Link>
+            <Link to="/login" className="text-styles">
+              Sign In
+            </Link>
           </NavLink>
         ) : (
           <Link
@@ -23,7 +25,9 @@ const CheckSteps = ({ step1, step2, step3, step4 }) => {
       <div className="navbar-item edited">
         {step2 ? (
           <NavLink to="/shipping">
-            <Link className="text-styles">Shipping</Link>
+            <Link to="/shipping" className="text-styles">
+              Shipping
+            </Link>
           </NavLink>
         ) : (
           <Link
@@ -39,7 +43,9 @@ const CheckSteps = ({ step1, step2, step3, step4 }) => {
       <div className="navbar-item edited">
         {step3 ? (
           <NavLink to="/payment">
-            <Link className="text-styles">Payment</Link>
+            <Link to="/payment" className="text-styles">
+              Payment
+            </Link>
           </NavLink>
         ) : (
           <Link
@@ -55,7 +61,9 @@ const CheckSteps = ({ step1, step2, step3, step4 }) => {
       <div className="navbar-item edited">
         {step4 ? (
           <NavLink to="/placeorder">
-            <Link className="text-styles">Place Order</Link>
+            <Link to="/placeorder" className="text-styles">
+              Place Order
+            </Link>
           </NavLink>
         ) : (
           <Link
