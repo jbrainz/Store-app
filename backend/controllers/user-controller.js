@@ -108,3 +108,11 @@ export const registerUser = asyncHandler(async (req, res) => {
     throw new Error('Invalid user data')
   }
 })
+
+//@desc get all users
+//@route Get /api/users
+//@access private/admin
+export const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({})
+  res.json(users)
+})
