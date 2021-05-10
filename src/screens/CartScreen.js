@@ -36,7 +36,10 @@ const CartScreen = ({ match, location, history }) => {
         <div className="column is-8">
           {cartItems.length === 0 ? (
             <div>
-              <Message variant="is-danger" error="Your cart is empty" />
+              <Message
+                variant="has-background-danger"
+                error="Your cart is empty"
+              />
               <Link
                 className="button is-link is-light"
                 style={{ marginLeft: '5rem' }}

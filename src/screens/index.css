@@ -85,7 +85,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  clip-path: polygon(0% 100%, 82% 100%, 98% 0%, 0 0);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -124,7 +123,6 @@
 
 .features {
   margin-top: 7.6rem;
-  background-image: linear-gradient(to right, #cdcdc6, #f8f9fa);
 }
 
 .mobile-features {
@@ -214,4 +212,12 @@
 
 .hr-rule {
   margin: 0.4rem 0;
+}
+
+.not-center {
+  justify-content: flex-start !important;
+}
+
+.brd {
+  border-radius: 0px !important;
 }

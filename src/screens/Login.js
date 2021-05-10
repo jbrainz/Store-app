@@ -33,7 +33,7 @@ const LoginScreen = ({ location, history }) => {
   return (
     <FormContainer>
       <h1 className="is-size-3">Sign In</h1>
-      {error && <Message error={error} />}
+      {error && <Message error={error} variant="has-background-danger" />}
       <form className="form-container  mt-6" onSubmit={submitHandler}>
         <div id="email" className="field">
           <div className="control">

@@ -40,8 +40,8 @@ const RegisterScreen = ({ location, history }) => {
   return (
     <FormContainer>
       <h1 className="is-size-3">Sign Up</h1>
-      {error && <Message error={error} />}
-      {message && <Message error={message} />}
+      {error && <Message error={error} variant="has-background-danger" />}
+      {message && <Message error={message} variant="has-background-danger" />}
       <form className="form-container  mt-6" onSubmit={submitHandler}>
         <div id="name" className="field">
           <div className="control">

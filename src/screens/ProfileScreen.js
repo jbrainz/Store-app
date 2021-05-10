@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink, Link } from 'react-router-dom'
 
 import Message from '../components/Message'
+import Loading from '../components/Loader'
+
 import {
   getUserDetails,
   updateUserProfile,
 } from '../state/actions/user-actions'
+import { listMyOrder } from '../state/actions/order-action'
 import './index.css'
 
 const ProfileScreen = ({ location, history }) => {
@@ -27,12 +31,16 @@ const ProfileScreen = ({ location, history }) => {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
   const { success } = userUpdateProfile
 
+  const myOrderList = useSelector((state) => state.myOrderList)
+  const { orders, loading: myOrderLoading, error: myOrderError } = myOrderList
+
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
     } else {
       if (!user.name) {
         dispatch(getUserDetails('profile'))
+        dispatch(listMyOrder())
       } else {
         setName(user.name)
         setEmail(user.email)
@@ -53,8 +61,10 @@ const ProfileScreen = ({ location, history }) => {
       <div style={{ marginTop: '10rem' }} className="columns">
         <div className="column is-4">
           <h2 className="is-size-3">Profile Settings</h2>
-          {error && <Message variant="is-danger" error={error} />}
-          {message && <Message variant="is-danger" error={message} />}
+          {error && <Message variant="has-background-danger" error={error} />}
+          {message && (
+            <Message variant="has-background-danger" error={message} />
+          )}
           {success && (
             <Message variant="is-success" error="Update Successfull" />
           )}
@@ -122,6 +132,63 @@ const ProfileScreen = ({ location, history }) => {
         </div>
         <div className="column">
           <h2 className="is-size-3"> Order History </h2>
+          {myOrderLoading ? (
+            <Loading />
+          ) : myOrderError ? (
+            <Message variant="has-background-danger" error={myOrderError} />
+          ) : (
+            <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>DATE</th>
+                  <th>TOTAL</th>
+                  <th>PAID</th>
+                  <th>DELIVERD</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>${order.totalPrice}</td>
+                    <td>
+                      {order.isPaid ? (
+                        order.paidAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className="fas fa-times"
+                          style={{ color: 'red' }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      {order.isDelivered ? (
+                        order.deliveredAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className="fas fa-times"
+                          style={{ color: 'red' }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      <NavLink
+                        to={`/order/${order._id}`}
+                        className="is-fullwidth is-flex"
+                      >
+                        <button className="brd button is-link is-outlined">
+                          Details
+                        </button>
+                      </NavLink>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>

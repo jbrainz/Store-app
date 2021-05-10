@@ -4,10 +4,7 @@ import './product.css'
 
 const Product = ({ product }) => {
   return (
-    <div
-      style={{ overflow: 'hidden', backgroundColor: '#ffc' }}
-      className="card n-card"
-    >
+    <div style={{ overflow: 'hidden' }} className="card n-card">
       <div className="card-image">
         <figure className="image is-square is-fullwidth">
           <Link to={`/product/${product._id}`}>

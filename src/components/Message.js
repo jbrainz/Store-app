@@ -3,10 +3,7 @@ import './loader.css'
 
 const Message = ({ error, variant }) => {
   return (
-    <div
-      style={{ opacity: 0.6 }}
-      className={`notification ${variant} is-light`}
-    >
+    <div className={`is-flex notification ${variant}`}>
       <h2 className="size-font">{error}</h2>
     </div>
   )

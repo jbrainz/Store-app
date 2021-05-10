@@ -26,7 +26,7 @@ const ProductDetails = ({ history, match }) => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message />
+        <Message error={error} variant="has-background-danger" />
       ) : (
         <div style={{ marginTop: '10rem' }} className="container">
           <div className="columns  space-up">

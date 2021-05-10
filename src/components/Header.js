@@ -145,7 +145,7 @@ const Header = () => {
             <div className="navbar-item">
               {userInfo ? (
                 <div className="navbar-item has-dropdown is-hoverable">
-                  <Link className="navbar-item">
+                  <Link to="/profile" className="navbar-item">
                     <h4 style={{ fontSize: '15px', fontWeight: '700' }}>
                       {userInfo.name}
                     </h4>

@@ -36,7 +36,7 @@ const HomeScreen = () => {
         {loading ? (
           <Loader />
         ) : error ? (
-          <Message variant="is-danger" error={error} />
+          <Message variant="has-background-danger" error={error} />
         ) : (
           <>
             <div className="column push-up is-mobile">
