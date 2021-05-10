@@ -3,31 +3,29 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import { notFound, errorHandler } from './middleware/errorMiddleWare.js'
 import connectDB from './config/db.js'
-import cors from 'cors'
 
 import productsRoute from './routes/products-route.js'
 import authRoute from './routes/user-routes.js'
+import orderRoute from './routes/order-routes.js'
 
 dotenv.config()
 
 connectDB()
 
 const app = express()
-// app.use(cors())
 app.use(express.json())
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', '*')
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-//   next()
-// })
 
 app.get('/', (req, res) => {
-  res.send('api is runing')
+  res.send('App is running on localhost')
 })
 
 app.use('/api/products', productsRoute)
 app.use('/api/users', authRoute)
+app.use('/api/orders', orderRoute)
+
+app.get('/api/config/paypal', (req, res) =>
+  res.send(process.env.PAYPAL_CLIENT_ID),
+)
 
 app.use(notFound)
 
