@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Message from '../components/Message'
 import { register } from '../state/actions/user-actions'
 import FormContainer from '../components/FormContainer'
-import './index.css'
+import './index.home.css'
 
 const RegisterScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
@@ -34,7 +34,7 @@ const RegisterScreen = ({ location, history }) => {
     if (password !== confirmPassword) {
       setMessage('Password donot match')
     }
-    dispatch(register(name, email, password))
+    dispatch(register(name, email, password, confirmPassword))
   }
 
   return (

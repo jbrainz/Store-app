@@ -10,7 +10,7 @@ import {
   updateUserProfile,
 } from '../state/actions/user-actions'
 import { listMyOrder } from '../state/actions/order-action'
-import './index.css'
+import './index.home.css'
 
 const ProfileScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')

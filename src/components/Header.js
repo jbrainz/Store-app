@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react'
+import { Route } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import './header.css'
 import useWindowDimensions from '../util/windowsHeightWidth'
+import SearchBox from './SearchBox'
 import { logout } from '../state/actions/user-actions'
 
 const Header = () => {
@@ -176,6 +178,38 @@ const Header = () => {
                   </Link>
                 </div>
               )}
+              {userInfo && userInfo.isAdmin && (
+                <div className="navbar-item has-dropdown is-hoverable">
+                  <Link to="/" className="navbar-item">
+                    <h4 style={{ fontSize: '15px', fontWeight: '700' }}>
+                      Admin
+                    </h4>
+                  </Link>
+                  <div className="navbar-dropdown">
+                    <Link
+                      style={{ fontSize: '15px', fontWeight: '700' }}
+                      to="/adim/userlist"
+                      className="navbar-item"
+                    >
+                      Users
+                    </Link>
+                    <Link
+                      style={{ fontSize: '15px', fontWeight: '700' }}
+                      to="/admin/productlist"
+                      className="navbar-item"
+                    >
+                      Products
+                    </Link>
+                    <Link
+                      style={{ fontSize: '15px', fontWeight: '700' }}
+                      to="/admin/orderlist"
+                      className="navbar-item"
+                    >
+                      Orders
+                    </Link>
+                  </div>
+                </div>
+              )}
               <div style={{ marginLeft: '1.5rem' }} className="is-light">
                 <Link to="/cart" className="is-dark navbar-item">
                   <span className="cart-item">
@@ -183,6 +217,9 @@ const Header = () => {
                   </span>
                 </Link>
               </div>
+              <Route
+                render={({ history }) => <SearchBox history={history} />}
+              />
             </div>
           </div>
         </div>

@@ -4,19 +4,21 @@ import Product from '../components/Product'
 import { useDispatch, useSelector } from 'react-redux'
 import SectionTabs from '../layouts/SectionTabs'
 import Slider from '../components/Slider'
-import './index.css'
+import './index.home.css'
 import { listProducts } from '../state/actions/productAction'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+  const keyword = match.params.keyword
+
   const dispatch = useDispatch()
 
   const productList = useSelector((state) => state.productList)
   const { loading, error, products } = productList
   useEffect(() => {
-    dispatch(listProducts())
-  }, [dispatch])
+    dispatch(listProducts(keyword))
+  }, [dispatch, keyword])
 
   return (
     <>
