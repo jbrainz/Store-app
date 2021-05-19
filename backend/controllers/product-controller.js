@@ -4,6 +4,8 @@ import Product from '../models/productModel.js'
 //@desc Fetch all Products
 //@access public
 export const fetchproducts = asyncHandler(async (req, res) => {
+  const pageSize = 8
+  const page = Number(req.query.pageNumber) || 1
   const keyword = req.query.keyword
     ? {
         name: {
@@ -12,8 +14,11 @@ export const fetchproducts = asyncHandler(async (req, res) => {
         },
       }
     : {}
+  const count = await Product.countDocuments({ ...keyword })
   const products = await Product.find({ ...keyword })
-  res.json(products)
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
+  res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
 
 //@desc Fetch single Products
@@ -122,6 +127,11 @@ export const createProductReview = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('Product not found')
   }
-  const updatedProduct = await product.save()
-  res.json(updatedProduct)
+})
+//@desc Get top rated Product
+//@request POST api/products/top
+//@access public
+export const getTopPrducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(8)
+  res.json(products)
 })
