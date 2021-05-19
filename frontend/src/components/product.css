@@ -1,0 +1,53 @@
+.center {
+  text-align: center;
+  padding: 20px;
+}
+
+.text-custom {
+  color: #000000;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 0%;
+  text-align: center;
+  padding-top: 5px !important;
+}
+
+.n-card {
+  border-radius: 1px;
+  width: 15rem;
+  border: 4px #000000 !important;
+}
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 18rem !important;
+    height: 0% !important;
+    margin-top: 3rem;
+  }
+  .text-custom {
+    font-size: 12px !important;
+  }
+  .rating {
+    font-size: 8px !important;
+  }
+  .n-card {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+.rating {
+  text-align: left;
+  color: #c9ae16;
+  margin-left: 15px;
+}
+
+.fluid {
+  display: block;
+  max-width: 100% !important;
+  height: auto;
+}
+/* .shadow-box {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} */

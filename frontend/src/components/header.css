@@ -1,0 +1,48 @@
+.navbar-item {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.navbar-start {
+  margin-left: 10rem;
+}
+
+.navbar-item img {
+  max-height: 5.78rem !important;
+}
+
+.navbar-start {
+  margin-left: 2rem !important;
+}
+
+.cart-item {
+  font-size: 14px;
+  color: '#000';
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.disabledCursor {
+  cursor: default;
+  color: rgb(97, 97, 97);
+}
+
+.text-styles {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Gotham', Arial, sans-serif;
+}
+
+.edited {
+  letter-spacing: 0 !important;
+}
+
+.remove-border {
+  border: 0 !important;
+}
+
+.round {
+  border-top-left-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+}
