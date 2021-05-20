@@ -72,7 +72,6 @@ const ProductEditScreen = ({ match, history }) => {
         },
       }
       const { data } = await axios.post('/api/upload', formData, config)
-      console.log(data)
       setImage(data)
       setUploading(false)
     } catch (error) {
@@ -177,21 +176,22 @@ const ProductEditScreen = ({ match, history }) => {
                 />
               </div>
             </div>
-            <div id="image-file" class="file has-name">
-              <label class="file-label">
+            <div id="image-file" className="file has-name">
+              <label className="file-label">
                 <input
-                  class="file-input"
+                  className="file-input"
                   onChange={uploadFileHandler}
                   type="file"
                   name="image"
+                  id="image-file"
                 />
-                <span class={uploading ? 'is-loading' : 'file-cta'}>
-                  <span class="file-icon">
-                    <i class="fas fa-upload"></i>
+                <span className={uploading ? 'is-loading' : 'file-cta'}>
+                  <span className="file-icon">
+                    <i className="fas fa-upload"></i>
                   </span>
-                  <span class="file-label">Choose file</span>
+                  <span className="file-label">Choose file</span>
                 </span>
-                <span class="file-name">{image}</span>
+                <span className="file-name">{image}</span>
               </label>
             </div>
             <div id="countInStock" className="field">

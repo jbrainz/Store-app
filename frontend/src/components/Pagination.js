@@ -22,8 +22,7 @@ const Pagination = ({ pages, page, isAdmin = false, keyword = '' }) => {
           >
             <ul className="pagination-list">
               <li>
-                <a
-                  href="/"
+                <div
                   disabled={x + 1 === page}
                   className={
                     x + 1 === page
@@ -32,40 +31,11 @@ const Pagination = ({ pages, page, isAdmin = false, keyword = '' }) => {
                   }
                 >
                   {x + 1}
-                </a>
+                </div>
               </li>
             </ul>
           </NavLink>
         ))}
-        {/* <NavLink
-        className="pagination-previous"
-        title="This is the first page"
-        disabled={page===1}
-      >
-        Previous
-      </NavLink>
-      <NavLink className="pagination-next">Next page</NavLink>
-      <ul className="pagination-list">
-        <li>
-          <NavLink
-            className="pagination-link is-current"
-            aria-label="Page 1"
-            aria-current="page"
-          >
-            1
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="pagination-link" aria-label="Goto page 2">
-            2
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="pagination-link" aria-label="Goto page 3">
-            3
-          </NavLink>
-        </li>
-      </ul> */}
       </nav>
     )
   )
