@@ -1,8 +1,7 @@
 .navbar-item {
-  font-family: 'Comfortaa', sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600;
 }
 
 .navbar-start {
@@ -45,4 +44,29 @@
 .round {
   border-top-left-radius: 15px !important;
   border-bottom-left-radius: 15px !important;
+}
+
+.navbar-brand {
+  justify-content: space-between !important;
+  align-items: center !important;
+  background-color: white !important;
+}
+
+.center-column {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .new-navbar {
+    background-color: transparent !important;
+    border: 0px;
+  }
+}
+
+.navbar-is-mobile {
+  height: 100%;
+  width: 323px;
+
+  opacity: 0.9;
 }

@@ -13,6 +13,9 @@ const Header = () => {
   const [className, setClassName] = useState(false)
   const [menDropdown, setMenDropdown] = useState(false)
   const [womenDropdown, setWomenDropdown] = useState(false)
+  const [profile, setProfile] = useState(false)
+  const [admin, setAdminDropdown] = useState(false)
+
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
@@ -21,81 +24,102 @@ const Header = () => {
 
   const onClick = () => {
     setClassName(!className)
+    setMenDropdown(false)
+    setWomenDropdown(false)
+    setProfile(false)
+    setAdminDropdown(false)
   }
 
   const logoutHandler = () => {
     dispatch(logout())
+    setClassName(!className)
   }
 
   return (
     <header>
       <nav
-        className="navbar is-fixed-top"
+        className="navbar new-navbar is-fixed-top"
         role="navigation"
         aria-label="main navigation"
       >
         {' '}
-        {width <= 540 ? (
+        {width <= 1024 ? (
           <div className="navbar-brand">
             <NavLink className="navbar-item" activeClassName="selected" to="/">
-              <img src="/img/logo.png" width="112" height="178" alt="robert" />
+              <img src="/img/logo.png" width="179" height="78" alt="robert" />
             </NavLink>
-            <a
-              role="button"
-              className={`navbar-burger burger ${className ? 'is-active' : ''}`}
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasicExample"
-              onClick={onClick}
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
+            <div className="is-light center-column columns is-mobile">
+              <div className="column ">
+                <Link to="/cart" className="is-dark navbar-item">
+                  <span className="cart-item">
+                    <i className="fas fa-shopping-bag"></i>
+                  </span>
+                </Link>
+              </div>
+
+              <div className="column">
+                <a
+                  role="button"
+                  className={`navbar-burger burger  ${
+                    className ? 'is-active' : ''
+                  }`}
+                  aria-label="menu"
+                  aria-expanded="false"
+                  data-target="navbarBasicExample"
+                  onClick={onClick}
+                >
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>
           </div>
         ) : null}
-        {/* <a
-          role="button"
-          className={`navbar-burger burger ${className ? 'is-active' : ''}`}
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-          onClick={onClick}
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a> */}
         <div
           id="navbarBasicExample"
-          className={`navbar-menu ${className ? 'is-active' : ''}`}
+          className={`navbar-menu navbar-is-mobile ${
+            className ? 'is-active' : ''
+          }  `}
         >
           <div className={className ? '' : 'navbar-start'}>
-            <Link to="/" className="navbar-item">
+            <Link
+              onClick={() => setClassName(!className)}
+              to="/"
+              className="navbar-item"
+            >
               New Arrivals
             </Link>
-            <div className="navbar-item has-dropdown is-hoverable">
+            <div className=" navbar-item has-dropdown is-hoverable">
               <Link
                 className="navbar-item"
                 onClick={() => setMenDropdown(!menDropdown)}
-                to="/"
+                to="#"
               >
                 Men
               </Link>
               {menDropdown && (
                 <div className="navbar-dropdown">
-                  <Link to="/" className="navbar-item">
-                    Shirts
+                  <Link
+                    onClick={() => setClassName(!className)}
+                    to="/"
+                    className="navbar-item"
+                  >
+                    T-Shirts
                   </Link>
-                  <Link to="/" className="navbar-item">
+                  <Link
+                    onClick={() => setClassName(!className)}
+                    to="/"
+                    className="navbar-item"
+                  >
                     Polo
                   </Link>
-                  <Link to="/" className="navbar-item">
+                  <Link
+                    onClick={() => setClassName(!className)}
+                    to="/"
+                    className="navbar-item"
+                  >
                     Pants
-                  </Link>
-                  <hr className="navbar-divider" />
-                  <Link to="/" className="navbar-item">
-                    Customized
                   </Link>
                 </div>
               )}
@@ -109,24 +133,32 @@ const Header = () => {
               </a>
               {womenDropdown && (
                 <div className="navbar-dropdown">
-                  <Link to="/" className="navbar-item">
+                  <Link
+                    onClick={() => setClassName(!className)}
+                    to="/"
+                    className="navbar-item"
+                  >
                     Home Wears
                   </Link>
-                  <Link to="/" className="navbar-item">
+                  <Link
+                    onClick={() => setClassName(!className)}
+                    to="/"
+                    className="navbar-item"
+                  >
                     Casuals
                   </Link>
-                  <Link to="/" className="navbar-item">
+                  <Link
+                    onClick={() => setClassName(!className)}
+                    to="/"
+                    className="navbar-item"
+                  >
                     Shirts
-                  </Link>
-                  <hr className="navbar-divider" />
-                  <Link to="/" className="navbar-item">
-                    Gowns
                   </Link>
                 </div>
               )}
             </div>
           </div>
-          {width > 540 ? (
+          {width > 1024 ? (
             <div className="navbar-brand">
               <NavLink
                 className="navbar-item"
@@ -135,8 +167,8 @@ const Header = () => {
               >
                 <img
                   src="/img/logo.png"
-                  width="112"
-                  height="178"
+                  width="290"
+                  height="120"
                   alt="robert"
                 />
               </NavLink>
@@ -147,76 +179,90 @@ const Header = () => {
             <div className="navbar-item">
               {userInfo ? (
                 <div className="navbar-item has-dropdown is-hoverable">
-                  <Link to="/profile" className="navbar-item">
-                    <h4 style={{ fontSize: '15px', fontWeight: '700' }}>
-                      {userInfo.name}
-                    </h4>
+                  <Link
+                    to="#"
+                    className="navbar-item"
+                    onClick={() => setProfile(!profile)}
+                  >
+                    {userInfo.name}
                   </Link>
-                  <div className="navbar-dropdown">
-                    <Link
-                      style={{ fontSize: '15px', fontWeight: '700' }}
-                      to="/profile"
-                      className="navbar-item"
-                    >
-                      Profile
-                    </Link>
-                    <a
-                      style={{ fontSize: '15px', fontWeight: '700' }}
-                      onClick={logoutHandler}
-                      className="navbar-item"
-                    >
-                      Logout
-                    </a>
-                  </div>
+                  {profile && (
+                    <div className="navbar-dropdown">
+                      <Link
+                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        to="/profile"
+                        className="navbar-item"
+                        onClick={() => setClassName(!className)}
+                      >
+                        Profile
+                      </Link>
+                      <a
+                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        onClick={logoutHandler}
+                        className="navbar-item"
+                      >
+                        Logout
+                      </a>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="navbar-item">
                   <Link to="/login" className="is-light navbar-item">
                     <span className="cart-item">
-                      <i className="far fa-user-circle"></i>ACCOUNT
+                      <i className="far fa-user-circle"></i>
                     </span>
                   </Link>
                 </div>
               )}
               {userInfo && userInfo.isAdmin && (
                 <div className="navbar-item has-dropdown is-hoverable">
-                  <Link to="/" className="navbar-item">
-                    <h4 style={{ fontSize: '15px', fontWeight: '700' }}>
-                      Admin
-                    </h4>
+                  <Link
+                    to="/"
+                    className="navbar-item"
+                    onClick={() => setAdminDropdown(!admin)}
+                  >
+                    Admin
                   </Link>
-                  <div className="navbar-dropdown">
-                    <Link
-                      style={{ fontSize: '15px', fontWeight: '700' }}
-                      to="/adim/userlist"
-                      className="navbar-item"
-                    >
-                      Users
-                    </Link>
-                    <Link
-                      style={{ fontSize: '15px', fontWeight: '700' }}
-                      to="/admin/productlist"
-                      className="navbar-item"
-                    >
-                      Products
-                    </Link>
-                    <Link
-                      style={{ fontSize: '15px', fontWeight: '700' }}
-                      to="/admin/orderlist"
-                      className="navbar-item"
-                    >
-                      Orders
-                    </Link>
-                  </div>
+                  {admin && (
+                    <div className="navbar-dropdown">
+                      <Link
+                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        to="/adim/userlist"
+                        className="navbar-item"
+                        onClick={() => setClassName(!className)}
+                      >
+                        Users
+                      </Link>
+                      <Link
+                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        to="/admin/productlist"
+                        className="navbar-item"
+                        onClick={() => setClassName(!className)}
+                      >
+                        Products
+                      </Link>
+                      <Link
+                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        to="/admin/orderlist"
+                        className="navbar-item"
+                        onClick={() => setClassName(!className)}
+                      >
+                        Orders
+                      </Link>
+                    </div>
+                  )}
                 </div>
               )}
-              <div style={{ marginLeft: '1.5rem' }} className="is-light">
-                <Link to="/cart" className="is-dark navbar-item">
-                  <span className="cart-item">
-                    <i className="fas fa-shopping-bag"></i>Cart
-                  </span>
-                </Link>
-              </div>
+              {width >= 1024 && (
+                <div style={{ marginLeft: '1.5rem' }} className="is-light">
+                  <Link to="/cart" className="is-dark navbar-item">
+                    <span className="cart-item">
+                      <i className="fas fa-shopping-bag"></i>
+                    </span>
+                  </Link>
+                </div>
+              )}
               <Route
                 render={({ history }) => <SearchBox history={history} />}
               />

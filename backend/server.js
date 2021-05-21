@@ -31,11 +31,9 @@ app.use('/api/upload', uploadRoute)
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID),
 )
+
 const __dirname = path.resolve()
-app.use(
-  '/frontend/public/img',
-  express.static(path.join(__dirname, '/frontend/public/img')),
-)
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/build')))

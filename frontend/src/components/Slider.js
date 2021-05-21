@@ -2,7 +2,7 @@ import Carousel from 'react-elastic-carousel'
 import Product from './Product'
 import useWindowDimensions from '../util/windowsHeightWidth'
 
-const Slider = ({ products }) => {
+const Slider = ({ products, history, match }) => {
   const { width } = useWindowDimensions()
   return (
     <Carousel
@@ -18,7 +18,7 @@ const Slider = ({ products }) => {
       itemPadding={width <= 430 ? [5, 10] : [5, 30]}
     >
       {products.map((product) => (
-        <Product key={product._id} product={product} />
+        <Product match={match} history={history} key={product._id} product={product} />
       ))}
     </Carousel>
   )

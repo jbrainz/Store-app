@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './tabs.css'
 import Product from '../components/Product'
 
-const SectionTabs = ({ products }) => {
+const SectionTabs = ({ products, history, match }) => {
   const [menTabs, setMenTabs] = useState(true)
   const [womenTabs, setWomenTabs] = useState(false)
 
@@ -45,7 +45,7 @@ const SectionTabs = ({ products }) => {
               .filter((product) => product.category === 'men')
               .map((men) => (
                 <div key={men._id} className="column">
-                  <Product product={men} />
+                  <Product history={history} match={match} product={men} />
                 </div>
               ))}
           </div>
@@ -58,7 +58,7 @@ const SectionTabs = ({ products }) => {
               .filter((product) => product.category === 'women')
               .map((women) => (
                 <div key={women._id} className="column">
-                  <Product product={women} />
+                  <Product history={history} match={match} product={women} />
                 </div>
               ))}
           </div>

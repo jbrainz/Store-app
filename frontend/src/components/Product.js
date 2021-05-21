@@ -2,21 +2,29 @@
 import { Link } from 'react-router-dom'
 import './product.css'
 
-const Product = ({ product }) => {
+const Product = ({ product, history, match }) => {
+  const addToCart = () => {
+    history.push(`/cart/${product._id}?qty=${1}`)
+  }
   return (
     <div style={{ overflow: 'hidden' }} className="card n-card">
-      <div className="card-image">
-        <figure className="image is-square is-fullwidth">
-          <Link to={`/product/${product._id}`}>
+      <div className="card-image changestate">
+        <Link to={`/product/${product._id}`}>
+          <figure className="image is-square is-fullwidth">
             <img src={product.image} alt={product.title} />
-          </Link>
-        </figure>
+          </figure>
+        </Link>
       </div>
-      <Link to={`/product/${product._id}`}>
-        <div className="media-content">
-          <p className="text-custom subtitle">{product.name}</p>
-        </div>
-      </Link>
+      <div className="media-content main-holder">
+        <button onClick={addToCart} className="button btn">
+          Add To Cart
+        </button>
+        <Link to={`/product/${product._id}`}>
+          <div className="show-content">
+            <p className="text-custom subtitle">{product.name}</p>
+          </div>
+        </Link>
+      </div>
     </div>
   )
 }

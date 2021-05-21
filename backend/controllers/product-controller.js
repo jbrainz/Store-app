@@ -132,6 +132,6 @@ export const createProductReview = asyncHandler(async (req, res) => {
 //@request POST api/products/top
 //@access public
 export const getTopPrducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({}).sort({ rating: -1 }).limit(8)
+  const products = await Product.find({}).sort({ rating: -1 }).limit(6)
   res.json(products)
 })

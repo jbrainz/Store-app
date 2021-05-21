@@ -13,7 +13,7 @@ import Pagination from '../components/Pagination'
 import Message from '../components/Message'
 import ProductCarousel from '../components/ProductCarousel'
 
-const HomeScreen = ({ match }) => {
+const HomeScreen = ({ match, history }) => {
   const keyword = match.params.keyword
   const pageNumber = match.params.pageNumber || 1
 
@@ -33,10 +33,9 @@ const HomeScreen = ({ match }) => {
           <ProductCarousel />
         ) : (
           <Link to="/">
-            <button>Back</button>
+            <button className="button is-dark">Back</button>
           </Link>
         )}
-
         <hr className="hr-rule extends" />
         {loading ? (
           <Loader />
@@ -48,7 +47,11 @@ const HomeScreen = ({ match }) => {
               <div className="columns is-multiline back">
                 {products.map((product) => (
                   <div key={product._id} className="column is-one-quarter">
-                    <Product product={product} />
+                    <Product
+                      match={match}
+                      history={history}
+                      product={product}
+                    />
                   </div>
                 ))}
               </div>
@@ -82,8 +85,8 @@ const HomeScreen = ({ match }) => {
             </div>
 
             <hr className="hr-rule extends" />
-            <Slider products={products} />
-            <SectionTabs products={products} />
+            <Slider history={history} match={match} products={products} />
+            <SectionTabs history={history} match={match} products={products} />
             <HomeContent />
           </>
         )}

@@ -38,13 +38,8 @@ const ProductCarousel = () => {
         {products.map((product) => (
           <div key={product._id}>
             <Link to={`/product/${product._id}`} className="">
-              <figure className="">
+              <figure>
                 <img className="fluid" alt={product.name} src={product.image} />
-                <div className="index">
-                  <h1 className="is-size-5">
-                    {product.name} (${product.price})
-                  </h1>
-                </div>
               </figure>
             </Link>
           </div>
