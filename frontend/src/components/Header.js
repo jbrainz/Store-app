@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-
 import './header.css'
 import useWindowDimensions from '../util/windowsHeightWidth'
 import SearchBox from './SearchBox'
@@ -93,7 +92,7 @@ const Header = () => {
         >
           <div className={className ? '' : 'navbar-start'}>
             <Link onClick={() => setShow(!show)} to="/" className="navbar-item">
-              New Arrivals
+              Home
             </Link>
             <div className=" navbar-item has-dropdown is-hoverable">
               <Link
@@ -101,30 +100,52 @@ const Header = () => {
                 onClick={() => setMenDropdown(!menDropdown)}
                 to="#"
               >
-                Men
+                MEN
               </Link>
               {menDropdown && (
                 <div className="navbar-dropdown">
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/"
+                    to="/sportshirt"
                     className="navbar-item"
                   >
-                    T-Shirts
+                    SPORT SHIRTS
+                  </Link>
+
+                  <Link
+                    onClick={() => setShow(!show)}
+                    to="/shortsleeve"
+                    className="navbar-item"
+                  >
+                    SHORT SLEEVE
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/"
+                    to="/polo"
                     className="navbar-item"
                   >
-                    Polo
+                    POLO
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/"
+                    to="/polo"
                     className="navbar-item"
                   >
-                    Pants
+                    T-SHIRT
+                  </Link>
+                  <Link
+                    onClick={() => setShow(!show)}
+                    to="/polo"
+                    className="navbar-item"
+                  >
+                    DRESS SHIRTS
+                  </Link>
+                  <Link
+                    onClick={() => setShow(!show)}
+                    to="/polo"
+                    className="navbar-item"
+                  >
+                    SPORT COATS
                   </Link>
                 </div>
               )}
@@ -134,30 +155,37 @@ const Header = () => {
                 onClick={() => setWomenDropdown(!womenDropdown)}
                 className="navbar-item"
               >
-                Women
+                WOMEN
               </a>
               {womenDropdown && (
                 <div className="navbar-dropdown">
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/"
+                    to="/tops"
                     className="navbar-item"
                   >
-                    Home Wears
+                    TOPS
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/"
+                    to="/bottoms"
                     className="navbar-item"
                   >
-                    Casuals
+                    BOTTOMS
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/"
+                    to="/dresses"
                     className="navbar-item"
                   >
-                    Shirts
+                    DRESSES
+                  </Link>
+                  <Link
+                    onClick={() => setShow(!show)}
+                    to="/jackets"
+                    className="navbar-item"
+                  >
+                    JACKETS
                   </Link>
                 </div>
               )}
