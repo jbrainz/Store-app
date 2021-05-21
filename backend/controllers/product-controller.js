@@ -21,6 +21,11 @@ export const fetchproducts = asyncHandler(async (req, res) => {
   res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
 
+export const fetchAllProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({})
+  res.json({ products })
+})
+
 //@desc Fetch single Products
 //@access public
 export const fetchProductById = asyncHandler(async (req, res) => {

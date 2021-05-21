@@ -71,6 +71,19 @@ const productSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    collectionsData: {
+      type: String,
+    },
+    size: [
+      {
+        type: String,
+      },
+    ],
+    gallery: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,

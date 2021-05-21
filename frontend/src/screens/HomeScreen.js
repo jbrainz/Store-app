@@ -43,6 +43,12 @@ const HomeScreen = ({ match, history }) => {
           <Message variant="has-background-danger" error={error} />
         ) : (
           <>
+            <div className="content">
+              <h3 className="has-text-centered my-5">The Opening Act</h3>
+              <h2 className="has-text-centered">
+                Graham's Collection, where any design is possible
+              </h2>
+            </div>
             <div className="column push-up is-mobile back">
               <div className="columns is-multiline back">
                 {products.map((product) => (
@@ -62,31 +68,30 @@ const HomeScreen = ({ match, history }) => {
               keyword={keyword ? keyword : ''}
             />
             <hr className="hr-rule extends" />
-            <div className="colum  features">
-              <div className="columns is-flex">
-                <div className="column is-one-quarter">
-                  <div className="cloumns  is-align-content-flex-end">
-                    <div className="column is-full-width">
-                      <h1 className="mobile-features">
-                        Shop Now and get discounts
-                      </h1>
-                    </div>
-                    <div className="column">
-                      <button className="button is-primary">New Arivals</button>
-                    </div>
-                  </div>
-                </div>
-                <div className="column is-one-third ">
-                  <figure className="image">
-                    <img src="/img/features.jpg" alt="select" />
-                  </figure>
-                </div>
+            <div className="cloumns  is-align-content-flex-end hero-background">
+              <div className="is-mobile-new ">
+                <h1 className="mobile-features">Shop Now and get discounts</h1>
+                <h3
+                  style={{
+                    color: 'white',
+                  }}
+                  className="mobile-feat"
+                >
+                  The Ultimate Convenient, Luxurious Experience
+                </h3>
+                <p className="title-sub ">
+                  Shop from home. We'll do the rest. Enjoy free delivery & free
+                  returns. Zoom or FaceTime for a one-on-one virtual styling
+                  consultation.
+                </p>
+              </div>
+              <div className="column has-elevation">
+                <button className="my-button">Shop Men</button>
               </div>
             </div>
-
             <hr className="hr-rule extends" />
             <Slider history={history} match={match} products={products} />
-            <SectionTabs history={history} match={match} products={products} />
+            <SectionTabs />
             <HomeContent />
           </>
         )}

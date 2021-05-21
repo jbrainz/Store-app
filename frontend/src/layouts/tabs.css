@@ -1,7 +1,14 @@
 .some-space {
-  margin-top: 5rem;
+  margin-top: 6rem !important;
 }
 
 .gh {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Open sans', sans-serif;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgb(0, 0, 0);
+  text-transform: uppercase;
+}
+
+.a-active {
+  color: rgb(255, 123, 0) !important;
 }

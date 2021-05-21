@@ -62,11 +62,30 @@
     background-color: transparent !important;
     border: 0px;
   }
+  .title-sub {
+    padding-right: 1rem;
+    width: 100%;
+  }
 }
 
 .navbar-is-mobile {
+  display: block;
   height: 100%;
   width: 323px;
-
   opacity: 0.9;
+}
+
+.is-mobile-new {
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.title-sub {
+  width: 80%;
+  color: #fff;
+  text-align: left;
 }

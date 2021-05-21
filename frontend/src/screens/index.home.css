@@ -33,7 +33,9 @@
   margin-top: 15px !important;
 }
 .content {
+  margin-top: 30px !important;
   padding-right: 9rem !important;
+  background-color: #fff !important;
 }
 
 .hr-rule {
@@ -84,13 +86,13 @@
   color: #fff !important;
   font-size: 2.5rem !important;
   text-align: left;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 .mobile {
   color: #fff !important;
   font-size: 1.8rem !important;
   text-align: left;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
 
@@ -105,7 +107,7 @@
 
 .extends {
   opacity: 0.6;
-  margin-top: 7.5rem;
+  margin-top: 7.5rem !important;
 }
 
 .features {
@@ -113,15 +115,16 @@
 }
 
 .mobile-features {
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 800;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Open sans', sans-serif;
   font-variant: normal;
+  color: #fff;
 }
 .mobile-feat {
   font-size: 1.4rem;
   font-weight: 800;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Open sans', sans-serif;
   font-variant: normal;
   padding: 0.6rem;
 }
@@ -153,7 +156,7 @@
     font-size: 20px !important;
   }
   .mobile-features {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
   }
   .extends {
@@ -211,4 +214,25 @@
 
 .back {
   background-color: #fff !important;
+}
+
+.hero-background {
+  background-image: url('./assets/banner.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+  background-size: cover;
+}
+
+.my-button {
+  width: 120px;
+  height: 50px;
+  background-color: #ff7b00f1;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Open sans', sans-serif;
+  border-width: 2px 0px #fff;
 }

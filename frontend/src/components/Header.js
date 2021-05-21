@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,6 +15,7 @@ const Header = () => {
   const [womenDropdown, setWomenDropdown] = useState(false)
   const [profile, setProfile] = useState(false)
   const [admin, setAdminDropdown] = useState(false)
+  const [show, setShow] = useState(false)
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -29,6 +30,15 @@ const Header = () => {
     setProfile(false)
     setAdminDropdown(false)
   }
+  useEffect(() => {
+    if (show) {
+      setClassName(false)
+      setAdminDropdown(false)
+      setMenDropdown(false)
+      setWomenDropdown(false)
+      setProfile(false)
+    }
+  }, [show])
 
   const logoutHandler = () => {
     dispatch(logout())
@@ -56,7 +66,6 @@ const Header = () => {
                   </span>
                 </Link>
               </div>
-
               <div className="column">
                 <a
                   role="button"
@@ -83,11 +92,7 @@ const Header = () => {
           }  `}
         >
           <div className={className ? '' : 'navbar-start'}>
-            <Link
-              onClick={() => setClassName(!className)}
-              to="/"
-              className="navbar-item"
-            >
+            <Link onClick={() => setShow(!show)} to="/" className="navbar-item">
               New Arrivals
             </Link>
             <div className=" navbar-item has-dropdown is-hoverable">
@@ -101,21 +106,21 @@ const Header = () => {
               {menDropdown && (
                 <div className="navbar-dropdown">
                   <Link
-                    onClick={() => setClassName(!className)}
+                    onClick={() => setShow(!show)}
                     to="/"
                     className="navbar-item"
                   >
                     T-Shirts
                   </Link>
                   <Link
-                    onClick={() => setClassName(!className)}
+                    onClick={() => setShow(!show)}
                     to="/"
                     className="navbar-item"
                   >
                     Polo
                   </Link>
                   <Link
-                    onClick={() => setClassName(!className)}
+                    onClick={() => setShow(!show)}
                     to="/"
                     className="navbar-item"
                   >
@@ -134,21 +139,21 @@ const Header = () => {
               {womenDropdown && (
                 <div className="navbar-dropdown">
                   <Link
-                    onClick={() => setClassName(!className)}
+                    onClick={() => setShow(!show)}
                     to="/"
                     className="navbar-item"
                   >
                     Home Wears
                   </Link>
                   <Link
-                    onClick={() => setClassName(!className)}
+                    onClick={() => setShow(!show)}
                     to="/"
                     className="navbar-item"
                   >
                     Casuals
                   </Link>
                   <Link
-                    onClick={() => setClassName(!className)}
+                    onClick={() => setShow(!show)}
                     to="/"
                     className="navbar-item"
                   >
@@ -192,7 +197,7 @@ const Header = () => {
                         style={{ fontSize: '15px', fontWeight: '700' }}
                         to="/profile"
                         className="navbar-item"
-                        onClick={() => setClassName(!className)}
+                        onClick={() => setShow(!show)}
                       >
                         Profile
                       </Link>
@@ -230,7 +235,7 @@ const Header = () => {
                         style={{ fontSize: '15px', fontWeight: '700' }}
                         to="/adim/userlist"
                         className="navbar-item"
-                        onClick={() => setClassName(!className)}
+                        onClick={() => setShow(!show)}
                       >
                         Users
                       </Link>
@@ -238,7 +243,7 @@ const Header = () => {
                         style={{ fontSize: '15px', fontWeight: '700' }}
                         to="/admin/productlist"
                         className="navbar-item"
-                        onClick={() => setClassName(!className)}
+                        onClick={() => setShow(!show)}
                       >
                         Products
                       </Link>
@@ -246,7 +251,7 @@ const Header = () => {
                         style={{ fontSize: '15px', fontWeight: '700' }}
                         to="/admin/orderlist"
                         className="navbar-item"
-                        onClick={() => setClassName(!className)}
+                        onClick={() => setShow(!className)}
                       >
                         Orders
                       </Link>
