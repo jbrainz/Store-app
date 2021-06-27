@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Link } from 'react-router-dom'
-import './product.css'
+import { Link } from "react-router-dom";
+import "./product.css";
 
 const Product = ({ product, history, match }) => {
   const addToCart = () => {
-    history.push(`/cart/${product._id}?qty=${1}`)
-  }
+    history.push(`/cart/${product._id}?qty=${1}`);
+  };
   return (
-    <div style={{ overflow: 'hidden' }} className="card n-card">
-      <div className="card-image changestate">
+    <div style={{ overflow: "hidden" }} className="card n-card back">
+      <div className="card-image changestate back">
         <Link to={`/product/${product._id}`}>
           <figure className="image is-square is-fullwidth">
             <img src={product.image} alt={product.title} />
@@ -26,7 +26,7 @@ const Product = ({ product, history, match }) => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

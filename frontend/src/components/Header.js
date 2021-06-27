@@ -1,48 +1,48 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom'
-import { Link, NavLink } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import './header.css'
-import useWindowDimensions from '../util/windowsHeightWidth'
-import SearchBox from './SearchBox'
-import { logout } from '../state/actions/user-actions'
+import { useState, useEffect } from "react";
+import { Route } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import "./header.css";
+import useWindowDimensions from "../util/windowsHeightWidth";
+import SearchBox from "./SearchBox";
+import { logout } from "../state/actions/user-actions";
 
-const Header = () => {
-  const [className, setClassName] = useState(false)
-  const [menDropdown, setMenDropdown] = useState(false)
-  const [womenDropdown, setWomenDropdown] = useState(false)
-  const [profile, setProfile] = useState(false)
-  const [admin, setAdminDropdown] = useState(false)
-  const [show, setShow] = useState(false)
+const Header = ({ match }) => {
+  const [className, setClassName] = useState(false);
+  const [menDropdown, setMenDropdown] = useState(false);
+  const [womenDropdown, setWomenDropdown] = useState(false);
+  const [profile, setProfile] = useState(false);
+  const [admin, setAdminDropdown] = useState(false);
+  const [show, setShow] = useState(false);
 
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-  const dispatch = useDispatch()
-  const { width } = useWindowDimensions()
+  const dispatch = useDispatch();
+  const { width } = useWindowDimensions();
 
   const onClick = () => {
-    setClassName(!className)
-    setMenDropdown(false)
-    setWomenDropdown(false)
-    setProfile(false)
-    setAdminDropdown(false)
-  }
+    setClassName(!className);
+    setMenDropdown(false);
+    setWomenDropdown(false);
+    setProfile(false);
+    setAdminDropdown(false);
+  };
   useEffect(() => {
     if (show) {
-      setClassName(false)
-      setAdminDropdown(false)
-      setMenDropdown(false)
-      setWomenDropdown(false)
-      setProfile(false)
+      setClassName(false);
+      setAdminDropdown(false);
+      setMenDropdown(false);
+      setWomenDropdown(false);
+      setProfile(false);
     }
-  }, [show])
+  }, [show]);
 
   const logoutHandler = () => {
-    dispatch(logout())
-    setClassName(!className)
-  }
+    dispatch(logout());
+    setClassName(!className);
+  };
 
   return (
     <header>
@@ -51,7 +51,7 @@ const Header = () => {
         role="navigation"
         aria-label="main navigation"
       >
-        {' '}
+        {" "}
         {width <= 1024 ? (
           <div className="navbar-brand">
             <NavLink className="navbar-item" activeClassName="selected" to="/">
@@ -69,7 +69,7 @@ const Header = () => {
                 <a
                   role="button"
                   className={`navbar-burger burger  ${
-                    className ? 'is-active' : ''
+                    className ? "is-active" : ""
                   }`}
                   aria-label="menu"
                   aria-expanded="false"
@@ -87,10 +87,10 @@ const Header = () => {
         <div
           id="navbarBasicExample"
           className={`navbar-menu navbar-is-mobile ${
-            className ? 'is-active' : ''
+            className ? "is-active" : ""
           }  `}
         >
-          <div className={className ? '' : 'navbar-start'}>
+          <div className={className ? "" : "navbar-start"}>
             <Link onClick={() => setShow(!show)} to="/" className="navbar-item">
               Home
             </Link>
@@ -106,7 +106,7 @@ const Header = () => {
                 <div className="navbar-dropdown">
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/sportshirt"
+                    to="/collections/sportshirt"
                     className="navbar-item"
                   >
                     SPORT SHIRTS
@@ -114,35 +114,35 @@ const Header = () => {
 
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/shortsleeve"
+                    to="/collections/shortsleeve"
                     className="navbar-item"
                   >
                     SHORT SLEEVE
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/polo"
+                    to="/collections/polo"
                     className="navbar-item"
                   >
                     POLO
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/polo"
+                    to="/collections/t-shirt"
                     className="navbar-item"
                   >
                     T-SHIRT
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/polo"
+                    to="/collections/dressshirts"
                     className="navbar-item"
                   >
                     DRESS SHIRTS
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/polo"
+                    to="/collections/sportcoats"
                     className="navbar-item"
                   >
                     SPORT COATS
@@ -161,28 +161,28 @@ const Header = () => {
                 <div className="navbar-dropdown">
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/tops"
+                    to="/collections/tops"
                     className="navbar-item"
                   >
                     TOPS
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/bottoms"
+                    to="/collections/bottoms"
                     className="navbar-item"
                   >
                     BOTTOMS
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/dresses"
+                    to="/collections/dresses"
                     className="navbar-item"
                   >
                     DRESSES
                   </Link>
                   <Link
                     onClick={() => setShow(!show)}
-                    to="/jackets"
+                    to="/collections/jackets"
                     className="navbar-item"
                   >
                     JACKETS
@@ -222,7 +222,7 @@ const Header = () => {
                   {profile && (
                     <div className="navbar-dropdown">
                       <Link
-                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        style={{ fontSize: "15px", fontWeight: "700" }}
                         to="/profile"
                         className="navbar-item"
                         onClick={() => setShow(!show)}
@@ -230,7 +230,7 @@ const Header = () => {
                         Profile
                       </Link>
                       <a
-                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        style={{ fontSize: "15px", fontWeight: "700" }}
                         onClick={logoutHandler}
                         className="navbar-item"
                       >
@@ -260,7 +260,7 @@ const Header = () => {
                   {admin && (
                     <div className="navbar-dropdown">
                       <Link
-                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        style={{ fontSize: "15px", fontWeight: "700" }}
                         to="/adim/userlist"
                         className="navbar-item"
                         onClick={() => setShow(!show)}
@@ -268,7 +268,7 @@ const Header = () => {
                         Users
                       </Link>
                       <Link
-                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        style={{ fontSize: "15px", fontWeight: "700" }}
                         to="/admin/productlist"
                         className="navbar-item"
                         onClick={() => setShow(!show)}
@@ -276,7 +276,7 @@ const Header = () => {
                         Products
                       </Link>
                       <Link
-                        style={{ fontSize: '15px', fontWeight: '700' }}
+                        style={{ fontSize: "15px", fontWeight: "700" }}
                         to="/admin/orderlist"
                         className="navbar-item"
                         onClick={() => setShow(!className)}
@@ -288,7 +288,7 @@ const Header = () => {
                 </div>
               )}
               {width >= 1024 && (
-                <div style={{ marginLeft: '1.5rem' }} className="is-light">
+                <div style={{ marginLeft: "1.5rem" }} className="is-light">
                   <Link to="/cart" className="is-dark navbar-item">
                     <span className="cart-item">
                       <i className="fas fa-shopping-bag"></i>
@@ -304,7 +304,7 @@ const Header = () => {
         </div>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
