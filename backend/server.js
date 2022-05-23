@@ -52,7 +52,7 @@ app.use(notFound)
 
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 4500
+const PORT =  6000
 
 app.listen(
   PORT,
