@@ -22,6 +22,7 @@ export const fetchproducts = asyncHandler(async (req, res) => {
 })
 
 export const fetchAllProducts = asyncHandler(async (req, res) => {
+  console.log(await Product.find({}))
   const products = await Product.find({})
   res.json({ products })
 })
