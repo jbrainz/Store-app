@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { PayPalButton } from 'react-paypal-button-v2'
-import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { PayPalButton } from "react-paypal-button-v2";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import './index.home.css'
-import Loader from '../components/Loader'
-import Message from '../components/Message'
+import "./index.home.css";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 import {
   getOrderDetails,
   payOrder,
   deliverOrder,
-} from '../state/actions/order-action'
+} from "../state/actions/order-action";
 import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
-} from '../state/constants/order-constants'
+} from "../state/constants/order-constants";
 
 /**
  *
@@ -23,75 +23,75 @@ import {
  * @returns JSX
  */
 const OrderScreen = ({ match, history }) => {
-  const orderId = match.params.id
-  const dispatch = useDispatch()
-  const [sdkReady, setSdkReady] = useState(false)
+  const orderId = match.params.id;
+  const dispatch = useDispatch();
+  const [sdkReady, setSdkReady] = useState(false);
 
-  const orderDetails = useSelector((state) => state.orderDetails)
-  const { order, error, loading } = orderDetails
+  const orderDetails = useSelector((state) => state.orderDetails);
+  const { order, error, loading } = orderDetails;
 
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-  const orderPay = useSelector((state) => state.orderPay)
-  const { success: successPay, loading: loadingPay } = orderPay
+  const orderPay = useSelector((state) => state.orderPay);
+  const { success: successPay, loading: loadingPay } = orderPay;
 
-  const orderDeliver = useSelector((state) => state.orderDeliver)
-  const { success: successDeliver, loading: loadingDeliver } = orderDeliver
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const { success: successDeliver, loading: loadingDeliver } = orderDeliver;
 
   if (!loading) {
     const addDecimals = (num) => {
-      return (Math.round(num * 100) / 100).toFixed(2)
-    }
+      return (Math.round(num * 100) / 100).toFixed(2);
+    };
     order.itemsPrice = addDecimals(
-      order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0),
-    )
+      order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+    );
   }
 
   useEffect(() => {
     if (!userInfo) {
-      history.push('/login')
+      history.push("/login");
     }
     const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get('/api/config/paypal')
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
-      script.async = true
+      const { data: clientId } = await axios.get("/api/config/paypal");
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+      script.async = true;
       script.onload = () => {
-        setSdkReady(true)
-      }
-      document.body.appendChild(script)
-    }
+        setSdkReady(true);
+      };
+      document.body.appendChild(script);
+    };
     if (!order || successPay || successDeliver) {
-      dispatch({ type: ORDER_PAY_RESET })
-      dispatch({ type: ORDER_DELIVER_RESET })
-      dispatch(getOrderDetails(orderId))
+      dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_DELIVER_RESET });
+      dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       if (!window.paypal) {
-        addPayPalScript()
+        addPayPalScript();
       } else {
-        setSdkReady(true)
+        setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, successPay, order, successDeliver, history, userInfo])
+  }, [dispatch, orderId, successPay, order, successDeliver, history, userInfo]);
 
   const deliverHandler = () => {
-    dispatch(deliverOrder(order))
-  }
+    dispatch(deliverOrder(order));
+  };
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult)
-    dispatch(payOrder(orderId, paymentResult))
-  }
+    console.log(paymentResult);
+    dispatch(payOrder(orderId, paymentResult));
+  };
   return loading ? (
     <Loader />
   ) : error ? (
     <Message error={error} />
   ) : (
     <>
-      {' '}
-      <div className="container" style={{ marginTop: '10rem' }}>
+      {" "}
+      <div className="container" style={{ marginTop: "10rem" }}>
         <h1 className="is-size-5  has-text-centered">ORDER: {order._id}</h1>
         <div className="columns is-6 margin-tp">
           <div className="column">
@@ -102,22 +102,22 @@ const OrderScreen = ({ match, history }) => {
                     <div>
                       <strong>SHIPPING</strong>
                       <br />
-                      <p>{order.user.name}</p>
+                      <p>{order?.user?.name}</p>
                       <a href={`mailto:${order.user.email}`}>
                         {order.user.email}
                       </a>
                       <br />
-                      {order.shippingAddress.address},{' '}
-                      {order.shippingAddress.city}{' '}
-                      {order.shippingAddress.postalCode},{' '}
-                      {order.shippingAddress.country}
+                      {order?.shippingAddress?.address},{" "}
+                      {order?.shippingAddress?.city}{" "}
+                      {order?.shippingAddress?.postalCode},{" "}
+                      {order?.shippingAddress?.country}
                     </div>
                   </div>
 
                   {order.isDelivered ? (
                     <Message
                       variant="has-background-success"
-                      error={`Delivered on ${order.deliveredAt}`}
+                      error={`Delivered on ${order?.deliveredAt}`}
                     />
                   ) : (
                     <Message
@@ -130,13 +130,13 @@ const OrderScreen = ({ match, history }) => {
                   <div className="column not-center is-three-quarters-mobile">
                     <p>
                       <strong>Payment Method</strong> <br />
-                      {order.paymentMethod}
+                      {order?.paymentMethod}
                     </p>
                   </div>
-                  {order.isPaid ? (
+                  {order?.isPaid ? (
                     <Message
                       variant="has-text-light has-background-success "
-                      error={`Paid on ${order.paidAt}`}
+                      error={`Paid on ${order?.paidAt}`}
                     />
                   ) : (
                     <Message
@@ -154,26 +154,26 @@ const OrderScreen = ({ match, history }) => {
                     />
                   ) : (
                     <ul className="ul-list">
-                      {order.orderItems.map((item, index) => (
+                      {order?.orderItems?.map((item, index) => (
                         <li key={index}>
                           <div className="columns is-6 is-mobile">
                             <div className="column">
                               <figure className="image">
                                 <img
                                   className="is-rounded"
-                                  alt={item.name}
-                                  src={item.image}
+                                  alt={item?.name}
+                                  src={item?.image}
                                 />
                               </figure>
                             </div>
                             <div className="column">
-                              <Link to={`/product/${item.product}`}>
-                                {item.name}
+                              <Link to={`/product/${item?.product}`}>
+                                {item?.name}
                               </Link>
                             </div>
                             <div className="column">
-                              {item.qty} x ${item.price} = $
-                              {item.qty * item.price}
+                              {item?.qty} x ${item?.price} = $
+                              {item?.qty * item?.price}
                             </div>
                           </div>
                         </li>
@@ -193,28 +193,28 @@ const OrderScreen = ({ match, history }) => {
               <div className="column">
                 <div className="columns is-mobile">
                   <div className="column">Items</div>
-                  <div className="column">${order.itemsPrice}</div>
+                  <div className="column">${order?.itemsPrice}</div>
                 </div>
               </div>
               <hr className="hr-rule" />
               <div className="column">
                 <div className="columns is-mobile">
                   <div className="column">Shipping</div>
-                  <div className="column">${order.shippingPrice}</div>
+                  <div className="column">${order?.shippingPrice}</div>
                 </div>
               </div>
               <hr className="hr-rule" />
               <div className="column">
                 <div className="columns is-mobile">
                   <div className="column">Tax</div>
-                  <div className="column">${order.taxPrice}</div>
+                  <div className="column">${order?.taxPrice}</div>
                 </div>
               </div>
               <hr className="hr-rule" />
               <div className="column">
                 <div className="columns is-mobile">
                   <div className="column">Total</div>
-                  <div className="column">${order.totalPrice}</div>
+                  <div className="column">${order?.totalPrice}</div>
                 </div>
               </div>
               <hr className="hr-rule" />
@@ -231,7 +231,7 @@ const OrderScreen = ({ match, history }) => {
                       <Loader />
                     ) : (
                       <PayPalButton
-                        amount={order.totalPrice}
+                        amount={order?.totalPrice}
                         onSuccess={successPaymentHandler}
                       />
                     )}
@@ -247,8 +247,8 @@ const OrderScreen = ({ match, history }) => {
                         onClick={deliverHandler}
                         className={
                           loadingDeliver
-                            ? 'button is-loading is-link brd'
-                            : 'brd button is-link is-outlined'
+                            ? "button is-loading is-link brd"
+                            : "brd button is-link is-outlined"
                         }
                       >
                         Mark As Delivered
@@ -261,7 +261,7 @@ const OrderScreen = ({ match, history }) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default OrderScreen
+export default OrderScreen;
