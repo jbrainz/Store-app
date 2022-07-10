@@ -1,28 +1,28 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
-import Message from '../components/Message'
-import './index.home.css'
-import Loader from '../components/Loader'
-import { listOrder } from '../state/actions/order-action'
+import Message from "../components/Message";
+import "./index.home.css";
+import Loader from "../components/Loader";
+import { listOrder } from "../state/actions/order-action";
 
 const OrderListScreen = ({ history }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const orderList = useSelector((state) => state.orderList)
-  const { loading, error, orders } = orderList
+  const orderList = useSelector((state) => state.orderList);
+  const { loading, error, orders } = orderList;
 
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listOrder())
+      dispatch(listOrder());
     } else {
-      history.push('/login')
+      history.push("/login");
     }
-  }, [dispatch, userInfo, history])
+  }, [dispatch, userInfo, history]);
 
   // const detailsHandler = (id) => {
   //   if (window.confirm('Are you sure?')) {
@@ -30,7 +30,7 @@ const OrderListScreen = ({ history }) => {
   //   }
   // }
   return (
-    <div style={{ marginTop: '10rem' }}>
+    <div style={{ marginTop: "10rem" }}>
       <h1>Orders</h1>
       {loading ? (
         <Loader />
@@ -59,16 +59,16 @@ const OrderListScreen = ({ history }) => {
                   <td>${order.totalPrice}</td>
                   <td>
                     {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
+                      order?.paidAt.substring(0, 10)
                     ) : (
-                      <i className="fas fa-times" style={{ color: 'red' }}></i>
+                      <i className="fas fa-times" style={{ color: "red" }}></i>
                     )}
                   </td>
                   <td>
                     {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
+                      order?.deliveredAt.substring(0, 10)
                     ) : (
-                      <i className="fas fa-times" style={{ color: 'red' }}></i>
+                      <i className="fas fa-times" style={{ color: "red" }}></i>
                     )}
                   </td>
                   <td className="is-flex">
@@ -85,7 +85,7 @@ const OrderListScreen = ({ history }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default OrderListScreen
+export default OrderListScreen;
