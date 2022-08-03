@@ -96,11 +96,11 @@ export const getMyOrders = asyncHandler(async (req, res) => {
 
 /**
  * @description GET all orders
- * @route GET/api/orders/myorder
+ * @route GET/api/orders/allorders
  * @access private isadmin
  */
 export const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({});
+  const orders = await Order.find();
   res.json({ orders });
 });
 
