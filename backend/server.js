@@ -57,7 +57,7 @@ app.use(notFound);
 
 app.use(errorHandler);
 
-const PORT = 6000;
+const PORT = process.env.PORT || 6000;
 
 app.listen(
   PORT,
