@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect("mongodb://pius:pius@cluster0-shard-00-00.g0tld.mongodb.net:27017/robertshop?ssl=true&replicaSet=atlas-qcfcpk-shard-0&authSource=admin&retryWrites=true&w=majority", {
+    const conn = await mongoose.connect("mongodb://store:store@ac-06r567y-shard-00-00.jgagxog.mongodb.net:27017/store?ssl=true&replicaSet=atlas-74wdwk-shard-0&authSource=admin&retryWrites=true&w=majority", {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useCreateIndex: true,
@@ -13,5 +13,4 @@ const connectDB = async () => {
     process.exit(1)
   }
 }
-
 export default connectDB
