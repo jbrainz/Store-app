@@ -1,1 +1,2 @@
-## An e-commerce fully functional application, with a nodejs server and nosql database.
+## An e-commerce fully functional application, with a nodejs server and nosql database. 
+## Buult for fun.
